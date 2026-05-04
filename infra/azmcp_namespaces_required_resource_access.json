@@ -1,0 +1,285 @@
+[
+  {
+    "resourceAppId": "022907d3-0f1b-48f7-badc-1ba6abab6d66",
+    "namespaces": [
+      "sql"
+    ],
+    "resourceAccess": [
+      {
+        "id": "c39ef2d1-04ce-46dc-8b5f-e9a5c60f0fc9",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "123cd850-d9df-40bd-94d5-c9f07b7fa203",
+    "namespaces": [
+      "mysql",
+      "postgres"
+    ],
+    "resourceAccess": [
+      {
+        "id": "cef99a3a-4cd3-4408-8143-4375d1e38a17",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "18a66f5f-dbdf-4c17-9dd7-1634712a9cbe",
+    "namespaces": [
+      "foundryextensions"
+    ],
+    "resourceAccess": [
+      {
+        "id": "1a7925b5-f871-417a-9b8b-303f9f29fa10",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "2746ea77-4702-4b45-80ca-3c97e680e8b7",
+    "namespaces": [
+      "kusto"
+    ],
+    "resourceAccess": [
+      {
+        "id": "00d678f0-da44-4b12-a6d6-c98bcfd1c5fe",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "35ffadb3-7fc1-497e-b61b-381d28e744cc",
+    "namespaces": [
+      "appconfig"
+    ],
+    "resourceAccess": [
+      {
+        "id": "08eeff12-9b4a-4273-b3d9-ff8a13c32645",
+        "type": "Scope"
+      },
+      {
+        "id": "28bb462a-d940-4cbe-afeb-281756df9af8",
+        "type": "Scope"
+      },
+      {
+        "id": "5970d132-a862-421f-9352-8ed18f833d78",
+        "type": "Scope"
+      },
+      {
+        "id": "77967a14-4f88-4960-84da-e8f71f761ac2",
+        "type": "Scope"
+      },
+      {
+        "id": "8d17f7f7-030c-4b57-8129-cfb5a16433cd",
+        "type": "Scope"
+      },
+      {
+        "id": "954b4156-78fb-4d19-94b0-41dc7b763e68",
+        "type": "Scope"
+      },
+      {
+        "id": "dd4449fe-4788-4656-b3f2-4f066e14478a",
+        "type": "Scope"
+      },
+      {
+        "id": "ea601552-5fd3-4792-9dfc-e85be5a6827c",
+        "type": "Scope"
+      },
+      {
+        "id": "f3cb665c-6320-4ae2-996d-b58707ade4c3",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "3603eff4-9141-41d5-ba8f-02fb3a439cd6",
+    "namespaces": [
+      "applicationinsights"
+    ],
+    "resourceAccess": [
+      {
+        "id": "384a9d29-7ed2-4fc4-b781-1aa48cb2b883",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "76c92352-c057-4cc2-9b1e-f34c32bc58bd",
+    "namespaces": [
+      "acr"
+    ],
+    "resourceAccess": []
+  },
+  {
+    "resourceAppId": "797f4846-ba00-4fd7-ba43-dac1f8f63013",
+    "namespaces": [
+      "acr",
+      "advisor",
+      "aks",
+      "appconfig",
+      "applens",
+      "applicationinsights",
+      "appservice",
+      "azuremigrate",
+      "compute",
+      "containerapps",
+      "cosmos",
+      "datadog",
+      "deploy",
+      "deviceregistry",
+      "eventgrid",
+      "eventhubs",
+      "extension",
+      "fileshares",
+      "foundryextensions",
+      "functionapp",
+      "grafana",
+      "kusto",
+      "loadtesting",
+      "managedlustre",
+      "monitor",
+      "mysql",
+      "policy",
+      "postgres",
+      "quota",
+      "redis",
+      "resourcehealth",
+      "role",
+      "search",
+      "servicefabric",
+      "signalr",
+      "speech",
+      "sql",
+      "storage",
+      "storagesync",
+      "virtualdesktop",
+      "workbooks"
+    ],
+    "resourceAccess": [
+      {
+        "id": "41094075-9dad-400e-a0bd-54e686782033",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "7d312290-28c8-473c-a0ed-8e53749b6d6d",
+    "namespaces": [
+      "foundryextensions",
+      "speech"
+    ],
+    "resourceAccess": [
+      {
+        "id": "5f1e8914-a52b-429f-9324-91b92b81adaf",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "80a10ef9-8168-493d-abf9-3297c4ef6e3c",
+    "namespaces": [
+      "servicebus"
+    ],
+    "resourceAccess": [
+      {
+        "id": "40e16207-c5fd-4916-8ca4-64565f2367ca",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "823c0a78-5de0-4445-a7f5-c2f42d7dc89b",
+    "namespaces": [
+      "eventgrid"
+    ],
+    "resourceAccess": [
+      {
+        "id": "d5f985b8-5529-49be-926a-58f4a026c488",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "847bd4c1-7486-4241-a783-f9bda69241c1",
+    "namespaces": [
+      "loadtesting"
+    ],
+    "resourceAccess": []
+  },
+  {
+    "resourceAppId": "880da380-985e-4198-81b9-e05b1cc53158",
+    "namespaces": [
+      "search"
+    ],
+    "resourceAccess": [
+      {
+        "id": "a4165a31-5d9e-4120-bd1e-9b88c66fd3b8",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "a232010e-820c-4083-83bb-3ace5fc29d0b",
+    "namespaces": [
+      "cosmos"
+    ],
+    "resourceAccess": [
+      {
+        "id": "8741c20d-e8c0-41ff-8adf-b7b9ba168197",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "c9e0b461-3515-4a03-b576-ede91ed4336d",
+    "namespaces": [
+      "confidentialledger"
+    ],
+    "resourceAccess": []
+  },
+  {
+    "resourceAppId": "ca7f3f0b-7d91-482c-8e09-c5d840d0eac5",
+    "namespaces": [
+      "deploy",
+      "monitor"
+    ],
+    "resourceAccess": [
+      {
+        "id": "e8dac03d-d467-4a7e-9293-9cca7df08b31",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "cfa8b339-82a2-471a-a3c9-0fc0be7a4093",
+    "namespaces": [
+      "keyvault"
+    ],
+    "resourceAccess": [
+      {
+        "id": "f53da476-18e3-4152-8e01-aec403e6edc0",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "e406a681-f3d4-42a8-90b6-c2b029497af1",
+    "namespaces": [
+      "storage"
+    ],
+    "resourceAccess": [
+      {
+        "id": "03e0da56-190b-40ad-a80c-ea378c433f7f",
+        "type": "Scope"
+      }
+    ]
+  },
+  {
+    "resourceAppId": "f3d5b479-4d7f-4a81-9e00-09e2b452c04e",
+    "namespaces": [
+      "monitor"
+    ],
+    "resourceAccess": []
+  }
+]

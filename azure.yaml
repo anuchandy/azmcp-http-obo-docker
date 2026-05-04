@@ -1,0 +1,39 @@
+name: azure-mcp-server-http-obo-docker
+metadata:
+  template: azure-mcp-server-http-obo-docker
+infra:
+  provider: bicep
+  path: ./infra
+  module: main
+hooks:
+  postprovision:
+    - run: |
+        $envValues = azd env get-values --output json | ConvertFrom-Json
+        $env:TENANT_ID = $envValues.tenantId
+        $env:SERVER_APP_ID = $envValues.serverAppId
+        $env:CLIENT_APP_ID = $envValues.clientAppId
+        $env:HOST_PORT = $envValues.hostPort
+        $env:NAMESPACES = $envValues.mcpNamespaces
+        
+        # Generate secret via Azure CLI instead of Bicep to avoid Microsoft Graph API limitations
+        # Bicep cannot add password credentials to existing apps: "New password credentials must be generated using service actions"
+        # This allows Entra ID Apps reuse across deployments without conflicts
+        #
+        Write-Host "Generating new server app secret..." -ForegroundColor Yellow
+        $secretResult = az ad app credential reset --id $env:SERVER_APP_ID --display-name "Azure MCP Token Exchange Secret" --years 1 --output json | ConvertFrom-Json
+        $env:SERVER_APP_SECRET = $secretResult.password
+        
+        docker-compose -f ./infra/docker-compose.yml up -d
+        
+        Write-Host "Azure MCP Server is running at http://localhost:$env:HOST_PORT" -ForegroundColor Green
+        Write-Host "Client App ID: $env:CLIENT_APP_ID" -ForegroundColor Cyan
+      shell: pwsh
+      cwd: ./infra
+
+  predeprovision:
+    - run: |
+        Write-Host "Stopping Azure MCP Server containers..." -ForegroundColor Yellow
+        docker-compose -f ./infra/docker-compose.yml down
+        Write-Host "Azure MCP Server containers stopped." -ForegroundColor Green
+      shell: pwsh
+      continueOnError: true

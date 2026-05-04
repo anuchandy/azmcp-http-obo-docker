@@ -1,0 +1,26 @@
+version: '3.8'
+
+name: azmcp-services
+
+services:
+  azure-mcp-server:
+    image: mcr.microsoft.com/azure-sdk/azure-mcp:latest
+    container_name: azure-mcp-server
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+    environment:
+      # ASP.NET Core Configuration
+      - ASPNETCORE_URLS=http://+:8080
+      # Azure AD Configuration (automatically injected by azd from Bicep outputs)
+      - AzureAd__Instance=https://login.microsoftonline.com/
+      - AzureAd__TenantId=${TENANT_ID:?TENANT_ID is required (run 'azd up' first)}
+      - AzureAd__ClientId=${SERVER_APP_ID:?SERVER_APP_ID is required (run 'azd up' first)}
+      - AzureAd__Audience=${SERVER_APP_ID:?SERVER_APP_ID is required (run 'azd up' first)}
+      - AzureAd__ClientCredentials__0__SourceType=ClientSecret
+      - AzureAd__ClientCredentials__0__ClientSecret=${SERVER_APP_SECRET:?SERVER_APP_SECRET is required (run 'azd up' first)}
+    command: >
+      --transport http
+      --outgoing-auth-strategy UseOnBehalfOf
+      --mode all
+      --namespace ${NAMESPACES:?NAMESPACES is required (run 'azd up' first)}
+    restart: unless-stopped
