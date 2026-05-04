@@ -2,10 +2,13 @@
 
 Azure MCP Server with OAuth2 On-Behalf-Of authentication running locally via Docker.
 
+> [!NOTE]
+> This setup is strictly for **local Docker runs**. For secure remote hosting, refer to the [these azd templates](https://github.com/microsoft/mcp/tree/main/servers/Azure.Mcp.Server/azd-templates).
+
 ## Prerequisites
 
 ```bash
-# Login to Azure CLI and azd (same tenant)
+# Login to Azure CLI and azd
 az login --tenant <tenant-id>
 azd auth login --tenant-id <tenant-id>
 ```
@@ -13,8 +16,8 @@ azd auth login --tenant-id <tenant-id>
 ## Configuration
 
 Edit `infra/main.bicepparam` to customize:
-- Host port 
 - MCP namespaces
+- Host port 
 
 ## Usage
 
@@ -24,32 +27,25 @@ azd up
 ```
 
 ```bash
-# On bash/macOS/Linux:
+# On PowerShell:
 # Grant admin consent for Azure service permissions
-SERVER_APP_ID=$(azd env get-values | grep serverAppId | cut -d'=' -f2 | tr -d '"')
+$SERVER_APP_ID = (azd env get-values |
+    Select-String serverAppId).
+    ToString().
+    Split('=')[1].
+    Trim('"')
+
 az ad app permission admin-consent --id $SERVER_APP_ID
 ```
 
 ```bash
-# On PowerShell/Windows:
-# Grant admin consent for Azure service permissions
-$SERVER_APP_ID = (azd env get-values | Select-String serverAppId).ToString().Split('=')[1].Trim('"')
-az ad app permission admin-consent --id $SERVER_APP_ID
+# Test client
+pwsh ./client/azmcp-client.ps1
 ```
-
 
 ```shell
 # Stop and cleanup
 azd down
-```
-
-## Test client
-
-```pwsh
-pwsh ./azmcp-client.ps1
-
-# Run with full HTTP/JSON dumps
-pwsh ./azmcp-client.ps1 -Detailed
 ```
 
 

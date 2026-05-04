@@ -22,17 +22,20 @@
 		respond 204
 	}
 
-	# azmcp advertises scope in /.well-known/oauth-protected-resource as:
+	# azmcp currently advertises scope in /.well-known/oauth-protected-resource as:
 	#
 	#   "scopes_supported": [
     #		"<serverAppId>/Mcp.Tools.ReadWrite"
     #	],
 	#
-	# but VSCode need it as 
+	# but the scope should start with the App ID URI (identifierUris) of the server app registration
+	# where it is in the form api://<serverAppId> (It must be in URI form - hence the api:// prefix).
 	#
 	#   "scopes_supported": [
     #		"api://<serverAppId>/Mcp.Tools.ReadWrite"
     #	],
+	#
+	# azmcp not returning the scope in this format seems like a bug that needs investigation.
 	#
 	handle /.well-known/oauth-protected-resource {
 		header Content-Type application/json

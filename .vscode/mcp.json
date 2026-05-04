@@ -1,6 +1,6 @@
 {
   "servers": {
-    "azure-mcp-docker-local": {
+    "azure-mcp-docker-local-01": {
       "type": "http",
       "url": "http://localhost:8080"
     }

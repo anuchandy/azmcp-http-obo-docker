@@ -1,6 +1,6 @@
 extension microsoftGraphV1
 
-@description('Unique name of the existing Server App — must match the uniqueName used in server-app.bicep.')
+@description('Unique name of the existing Server App - must match the uniqueName used in server-app.bicep.')
 param appUniqueName string
 
 @description('Display name for the Server App.')
