@@ -18,7 +18,7 @@ docker-compose.override.yml
 *.pem
 
 # IDE & Editors
-.vscode/
+.vscode/*
 .vs/
 .idea/
 *.swp

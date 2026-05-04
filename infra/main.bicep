@@ -6,9 +6,11 @@ param appName string
 @description('MCP tool namespaces to expose — drives the requiredResourceAccess on the server app.')
 param namespaces string[]
 
-@description('Public client redirect URIs for interactive login flows (VS Code, CLI, browser). http://localhost covers all localhost ports.')
+@description('Public client redirect URIs for interactive login flows (VS Code, CLI, browser). http://localhost covers all localhost ports; the explicit 127.0.0.1 + vscode.dev entries are required by VS Code MCP auth.')
 param publicClientRedirectUris array = [
   'http://localhost'
+  'http://127.0.0.1:33418'
+  'https://vscode.dev/redirect'
 ]
 
 @description('Host port for the local MCP server container.')

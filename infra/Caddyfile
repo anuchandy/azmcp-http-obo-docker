@@ -1,0 +1,50 @@
+{
+	auto_https off
+	admin off
+}
+
+:8080 {
+	log {
+		output stdout
+		format console
+	}
+
+	header {
+		Access-Control-Allow-Origin "*"
+		Access-Control-Allow-Methods "GET, POST, OPTIONS"
+		Access-Control-Allow-Headers "Authorization, Content-Type, Accept, Mcp-Session-Id"
+		Access-Control-Expose-Headers "Mcp-Session-Id, Www-Authenticate"
+		Access-Control-Max-Age "3600"
+	}
+
+	@preflight method OPTIONS
+	handle @preflight {
+		respond 204
+	}
+
+	# azmcp advertises scope in /.well-known/oauth-protected-resource as:
+	#
+	#   "scopes_supported": [
+    #		"<serverAppId>/Mcp.Tools.ReadWrite"
+    #	],
+	#
+	# but VSCode need it as 
+	#
+	#   "scopes_supported": [
+    #		"api://<serverAppId>/Mcp.Tools.ReadWrite"
+    #	],
+	#
+	handle /.well-known/oauth-protected-resource {
+		header Content-Type application/json
+		respond `{"resource":"http://localhost:{$HOST_PORT}","authorization_servers":["https://login.microsoftonline.com/{$TENANT_ID}/v2.0"],"scopes_supported":["api://{$SERVER_APP_ID}/Mcp.Tools.ReadWrite"],"bearer_methods_supported":["header"],"resource_documentation":"https://github.com/Microsoft/mcp"}` 200
+	}
+
+	handle {
+		reverse_proxy azure-mcp-server:8080 {
+			flush_interval -1
+			transport http {
+				read_timeout 24h
+			}
+		}
+	}
+}
